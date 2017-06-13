@@ -1,6 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+import os
+from flask_login import LoginManager
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'always easy'
@@ -13,4 +16,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 # 导入一个新的模块，叫做 models
 
 db = SQLAlchemy(app)
+
+
+lm = LoginManager()
+lm.init_app(app)
+lm.login_view = 'login'
+
+
 from app import views, models

@@ -8,6 +8,21 @@ class User(db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     posts = db.relationship('Post', backref='users', lazy='dynamic')
 
+    def is_authenticated(self):     # is_authenticated 允许用户验证，只返回True
+        return True
+
+    def is_active(self):            # is_active 有效账户都返回True，除非禁止账户
+        return True
+
+    def is_anonymous(self):         # is_anonymous 伪造用户之外都是True
+        return True
+
+    def get_id(self):               # get_id 返回用户唯一标识符，以str格式
+        try:
+            return str(self.id)
+        except NameError:
+            return str(self.id)
+
     def __repr__(self):
         return '<User {}>'.format(self.nickname)
 

@@ -4,13 +4,12 @@
 <form method="post" action="" name="login">
     {{ form.hidden_tag() }}
     <p>
-        Please enter your OpenID:<br>
+        Please enter your OpenID, or select one of the providers:<br>
         {{ form.openid(size=80) }}<br>
-        {% for error in form.openid.errors %}
         <span style="color:darkred">[{{ error }}]</span>
-        {% endfor %}<br>
+        <br>
     </p>
     <p>{{ form.remember_me }} Remember Me</p>
-    <p><input type="sumbit" value="Sign In"></p>
+    <p><input type="submit" value="Sign In"></p>
 </form>
 {% endblock %}
